@@ -2,7 +2,7 @@ import pandas as pd
 import datetime
 import numpy as np
 from pandas_datareader import data as pdr
-import matplotlib.pyplot as plt;
+import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 plt.rcdefaults()
@@ -86,8 +86,6 @@ def display_average_daily_gain():
 
     plt.show()
     plt.close()
-
-
 
 
 def display_daily_candle_distribution():
