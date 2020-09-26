@@ -53,11 +53,9 @@ for day in days_of_the_week:
     days_of_the_week_dfs.append(df[df['Day'].str.match(day)])
 
 days_of_the_week_mean = []
-days_of_the_week_volatility = []
 
 for df in days_of_the_week_dfs:
     days_of_the_week_mean.append(df['Percentage'].mean())
-    days_of_the_week_volatility.append(df['Percentage'].std())
 
 #   Will store the number of the green daily candles vs red daily candles in this variable
 #   Green candle: Close Price > Open Price
@@ -90,25 +88,6 @@ def display_average_daily_gain():
     plt.close()
 
 
-def display_average_daily_volatility():
-    fig = plt.figure()
-    plt.style.use('ggplot')
-    ax = fig.add_subplot(111)
-
-    x = days_of_the_week
-    average_daily_volatility = [round(i, len(x)) for i in days_of_the_week_volatility]
-    x_pos = [i for i, _ in enumerate(x)]
-    ax.bar(x_pos, average_daily_volatility, color='blue')
-    ax.yaxis.set_major_formatter(mtick.PercentFormatter())
-
-    plt.xlabel("Day of the week")
-    plt.ylabel("Average Volatility")
-    plt.title("{0} data from {1} to {2}".format(stock_symbol, start_date.date(), end_date.date()))
-
-    plt.xticks(x_pos, x)
-
-    plt.show()
-    plt.close()
 
 
 def display_daily_candle_distribution():
@@ -170,7 +149,6 @@ def dailygains_versus_overnightgains_percentage():
 
 
 display_average_daily_gain()
-display_average_daily_volatility()
 display_daily_candle_distribution()
 display_dailygains_versus_overnightgains()
 dailygains_versus_overnightgains_percentage()
